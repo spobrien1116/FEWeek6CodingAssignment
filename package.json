@@ -1,0 +1,23 @@
+{
+  "name": "feweek6codingassignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "FEWeek6CodingAssignment.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spobrien1116/FEWeek6CodingAssignment.git"
+  },
+  "author": "Shawn O'Brien",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spobrien1116/FEWeek6CodingAssignment/issues"
+  },
+  "homepage": "https://github.com/spobrien1116/FEWeek6CodingAssignment#readme",
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0"
+  }
+}
