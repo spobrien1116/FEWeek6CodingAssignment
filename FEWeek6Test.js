@@ -1,4 +1,4 @@
-// Class designed to create all 52 cards.
+// Test for FEWeek6CodingAssignment
 class Card {
     
     constructor(value, suit) {
