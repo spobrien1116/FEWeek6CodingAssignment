@@ -36,10 +36,12 @@ class Card {
 // Class designed to create a deck of all 52 cards.
 class Deck {
     
-    constructor() {
-        this.deck = [];
+    constructor(emptyDeck) {
+        this.deck = emptyDeck;
+        this.shuffledDeck = [];
     }
 
+    // Using 4 for loops, calls on the Card class to create the 52 cards and push them into the array of this.deck.
     createDeck() {
         for (let i = 2; i < 15; i++) {
             let cardSpade = new Card(i, 'Spades');
@@ -62,6 +64,22 @@ class Deck {
         }
 
         return this.deck;
+    }
+
+    // This part is included to randomize the array of cards that were just created.
+    shuffleDeck(newDeck) {
+        for (let i = 0; i < newDeck.length; i++) {
+            this.shuffledDeck.push(newDeck[i]);
+        }
+
+        for (let i = this.shuffledDeck.length - 1; i > 0; i--) {
+            let r = Math.floor(Math.random() * (i + 1));
+            let temp = this.shuffledDeck[i];
+            this.shuffledDeck[i] = this.shuffledDeck[r];
+            this.shuffledDeck[r] = temp;
+        }
+
+        return this.shuffledDeck;
     }
 
 }
@@ -103,30 +121,26 @@ class Game {
     
     constructor() {
         this.deck = [];
+        this.random = [];
     }
     
     createCardsAndDeck() {    
-        let createTheCardsAndDeck = new Deck();
+        let createTheCardsAndDeck = new Deck(this.deck);
         let newDeck = (createTheCardsAndDeck.createDeck());
         // This should show the non-shuffled deck.
         console.log("Here is the created deck, unshuffled.");
         console.log(newDeck);
-        this.deck = newDeck;
-        // This part is included to randomize the array of cards that were just created.
-        // for (let i = this.deck.length - 1; i > 0; i--) {
-        //     let r = Math.floor(Math.random() * (i + 1));
-        //     let temp = this.deck[i];
-        //     this.deck[i] = this.deck[r];
-        //     this.deck[r] = temp;
-        // }
-        // console.log("Here is the new randomized deck. It consists of cards in this order: " + this.deck);
+        let random = (createTheCardsAndDeck.shuffleDeck(newDeck));
+        console.log("Here is the new randomized deck. It consists of cards in this order: ");
+        console.log(random);
+        this.random = random;
     }
     
     createPlayers() {
         let player1 = new Player("Player 1");
         let player2 = new Player("Player 2");
-        player1.createPlayer(this.deck);
-        player2.createPlayer(this.deck);
+        player1.createPlayer(this.random);
+        player2.createPlayer(this.random);
     }
 
 }
