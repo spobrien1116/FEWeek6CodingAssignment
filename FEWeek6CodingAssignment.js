@@ -102,6 +102,9 @@ class Player {
         console.log(`${this.player} has been created. They start off with a score of ${this.playerScore} points.`);   
         console.log(this.player + "'s starting deck:");
         console.log(thePlayer.theDeck);
+        if (thePlayer.theDeck.length !== 26) {
+            throw new Error("The created deck was not 26 objects. The array 'theDeck' should consist of 26 objects of 'card'.");
+        }
         return thePlayer;
     }
 
